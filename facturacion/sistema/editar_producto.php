@@ -63,6 +63,8 @@ if(!empty($_POST))
                                                                     
             $alert='<p class="msg_save"> Si entró </p>'  ;
 
+            print_r("My Data pls" + $producto);
+
             if($query_update){
 
                 // En caso de que se seleccionara otra foto de los archivos guardados actualiza con la nueva imagen el campo
