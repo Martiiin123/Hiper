@@ -61,7 +61,7 @@ if(!empty($_POST))
                                                                     precio = $precio, foto = '$imgProducto' 
                                                                     WHERE codproducto = $codproducto"); 
                                                                     
-            $alert='<p class="msg_save"> Si entró </p>' + $producto + $precio + $proveedor + $codproducto ;
+            $alert='<p class="msg_save"> Si entró </p>'  ;
 
             if($query_update){
 
@@ -77,7 +77,7 @@ if(!empty($_POST))
                 }
                 
             }else {
-                $alert='<p class="msg_error"> Error al actualizar el producto </p>';     
+                $alert='<p class="msg_error"> Error al actualizar el producto32reewrew </p>';     
             } 
     }
 }
