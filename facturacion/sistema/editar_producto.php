@@ -55,14 +55,13 @@ if(!empty($_POST))
                 $imgProducto ='img_producto.png';
             }
         }
-
           
             //Actualiza en tabla prodcuto
-            $query_update = mysqli_query($conection, "update producto set descripcion = '$producto',proveedor = $proveedor,
+            $query_update = mysqli_query($conection, "UPDATE producto SET descripcion = $producto, proveedor = $proveedor,
                                                                     precio = $precio, foto = '$imgProducto' 
-                                                                    where codproducto = $codproducto"); 
+                                                                    WHERE codproducto = $codproducto"); 
                                                                     
-            $alert='<p class="msg_save"> PGAGA </p>';
+            $alert='<p class="msg_save"> Si entró </p>' + $producto + $precio + $proveedor + $codproducto ;
 
             if($query_update){
 
@@ -74,8 +73,9 @@ if(!empty($_POST))
                 if($nombre_foto != ''){
                     // Mueve la direccion temporal a la direccion de de la carpeta imagenes 
                     move_uploaded_file($url_tmp, $src);
+                    $alert='<p class="msg_save"> Producto actualizado con exito. </p>';
                 }
-                $alert='<p class="msg_save"> Producto actualizado con exito. </p>';
+                
             }else {
                 $alert='<p class="msg_error"> Error al actualizar el producto </p>';     
             } 
