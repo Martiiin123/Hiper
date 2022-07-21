@@ -161,7 +161,7 @@ if (empty($_REQUEST['id'])) {
             <label for="proveedor">Proveedor</label>   
             <?php 
                 // Encuentra los campos solicitados de la tabla proveedor para mostrarlos en el option
-                $query_proveedor = mysqli_query($conection, "select codproveedor, proveedor from proveedor 
+                $query_proveedor = mysqli_query($conection, "SELECT codproveedor, proveedor from proveedor 
                 where estatus = 1 order by proveedOR ASC");
                 $result_proveedor = mysqli_num_rows($query_proveedor);
                 mysqli_close($conection);
