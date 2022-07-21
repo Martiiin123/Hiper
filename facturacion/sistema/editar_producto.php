@@ -15,15 +15,26 @@ if(!empty($_POST))
     //Verifica los campos 
     $alert='';
     if(empty($_POST['proveedor']) || empty($_POST['producto']) || empty($_POST['precio']) || 
-        empty($_POST['id'])  || empty($_POST['foto_actual']) || empty($_POST['foto_remove']))
+        empty($_POST['id'])  || empty($_POST['foto_actual']) || empty($_POST['foto_remove']) )
     {
         $alert='<p class="msg_error"> Todos los campos son obligatorios </p>';
     }else if ( $_POST['precio']<= 0)
     {
         $alert='<p class="msg_error"> El precio y/o existencia deben ser mayor a 0 </p>';
-    }else{
+    }
+    else{
 
-        $codproducto = $_POST['id'];
+        
+        $url = basename($_SERVER['REQUEST_URI']);
+
+        $url_parsee= parse_url($url);
+
+        parse_str($url_parsee['query'], $params);
+
+        echo 'Your Id is ' .$params['id'];
+        
+        $codproducto = $params['id'];
+        
         
         //Obtencion de los datos 
         $proveedor = $_POST['proveedor'];
@@ -38,7 +49,7 @@ if(!empty($_POST))
         $type = $foto['type'];
         $url_tmp = $foto['tmp_name'];
 
-        // Imagen por deafaul si no se guarda foto
+        // Imagen por default si no se guarda foto
         $upd ='';
 
         //Ruta de almacenamiento de la foto si es que se agrega una
@@ -57,13 +68,13 @@ if(!empty($_POST))
         }
           
             //Actualiza en tabla prodcuto
-            $query_update = mysqli_query($conection, "UPDATE producto SET descripcion = $producto, proveedor = $proveedor,
-                                                                    precio = $precio, foto = '$imgProducto' 
-                                                                    WHERE codproducto = $codproducto"); 
+            $query_update = mysqli_query($conection, "UPDATE producto SET descripcion = '$producto', proveedor = '$proveedor',
+                                                                    precio = '$precio', foto = '$imgProducto' 
+                                                                    WHERE codproducto = $codproducto "); 
                                                                     
             $alert='<p class="msg_save"> Si entró </p>'  ;
 
-            print_r("My Data pls" + $producto);
+            print_r($codproducto);
 
             if($query_update){
 
@@ -79,7 +90,7 @@ if(!empty($_POST))
                 }
                 
             }else {
-                $alert='<p class="msg_error"> Error al actualizar el producto32reewrew </p>';     
+                $alert='<p class="msg_error"> Error al actualizar el producto :3 </p>';     
             } 
     }
 }
@@ -118,7 +129,7 @@ if (empty($_REQUEST['id'])) {
             $foto = '<img  id="img" src="img/uploads/'.$data_producto['foto'].'" alt="Producto">';
         }
 
-        print_r($data_producto);
+        print_r('No sale nada');
     }else {
         
         $alert='<p class="msg_error"> sdsd</p>';

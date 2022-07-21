@@ -102,7 +102,7 @@
                     }
 
             ?> 
-                        <tr class = "row<?php echo $data["codproducto"] ?>  ">
+                        <tr class = "row">
                             <td> <?php echo $data["codproducto"]  ?> </td>
                             <td> <?php echo $data["descripcion"]  ?> </td>
                             <td class = "celPrecio" > <?php echo $data["precio"]  ?> </td>
